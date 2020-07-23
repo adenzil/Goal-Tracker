@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:goal_tracker/models/goal_for_listing.dart';
+import 'package:goal_tracker/services/goals_service.dart';
 import 'package:goal_tracker/views/goal_delete.dart';
 import 'package:goal_tracker/views/goal_modify.dart';
 
 import 'goal_progress.dart';
 
-final goals = [
-  new GoalForListing(
-    id: 1,
-    name: "Goal 1",
-    description: "Goal 1 description",
-    duration: 7,
-  ),
-  new GoalForListing(
-    id: 2,
-    name: "Goal 2",
-    description: "Goal 2 description",
-    duration: 21,
-  ),
-  new GoalForListing(
-    id: 3,
-    name: "Goal 3",
-    description: "Goal 3 description",
-    duration: 30,
-  ),
-];
+class GoalList extends StatefulWidget {
+  @override
+  _GoalListState createState() => _GoalListState();
+}
 
-class GoalList extends StatelessWidget {
+class _GoalListState extends State<GoalList> {
+  GoalsService get service => GetIt.I<GoalsService>();
+
+  List<GoalForListing> goals = [];
+
+  @override
+  void initState() {
+    goals = service.getGoalsList();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

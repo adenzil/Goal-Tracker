@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:goal_tracker/services/goals_service.dart';
 import 'package:goal_tracker/views/goal_list.dart';
 
+void setupLocator() {
+  GetIt.I.registerLazySingleton(() => GoalsService());
+  GetIt.I<GoalsService>();
+}
+
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 
