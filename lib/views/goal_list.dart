@@ -3,6 +3,8 @@ import 'package:goal_tracker/models/goal_for_listing.dart';
 import 'package:goal_tracker/views/goal_delete.dart';
 import 'package:goal_tracker/views/goal_modify.dart';
 
+import 'goal_progress.dart';
+
 final goals = [
   new GoalForListing(
     id: 1,
@@ -57,7 +59,7 @@ class GoalList extends StatelessWidget {
               subtitle: Text(goals[i].description),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => GoalModify(id: goals[i].id)));
+                    builder: (_) => GoalProgress(id: goals[i].id)));
               },
             ),
             background: Container(
