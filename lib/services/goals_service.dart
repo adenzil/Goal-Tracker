@@ -23,4 +23,8 @@ class GoalsService {
       ),
     ];
   }
+
+  getGoalByIndex(int index) {
+    return getGoalsList()[index - 1];
+  }
 }
