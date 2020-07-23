@@ -1,5 +1,5 @@
 class GoalForListing {
-  String id;
+  int id;
   String name;
   String description;
   DateTime startDate;
