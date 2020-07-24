@@ -24,7 +24,7 @@ class GoalsService {
     ];
   }
 
-  getGoalByIndex(int index) {
-    return getGoalsList()[index - 1];
+  getGoalById(int id) {
+    return getGoalsList().firstWhere((i) => i.id == id);
   }
 }

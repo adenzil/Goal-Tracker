@@ -21,7 +21,7 @@ class _GoalProgressState extends State<GoalProgress> {
 
   @override
   void initState() {
-    goal = service.getGoalByIndex(widget.id);
+    goal = service.getGoalById(widget.id);
     super.initState();
   }
 
