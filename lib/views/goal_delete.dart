@@ -12,7 +12,10 @@ class GoalDelete extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop(true);
             },
-            child: Text("YES")),
+            child: Text(
+              "YES",
+              style: TextStyle(color: Colors.red),
+            )),
         FlatButton(
             onPressed: () {
               Navigator.of(context).pop(false);
