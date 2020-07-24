@@ -40,12 +40,16 @@ class _GoalListState extends State<GoalList> {
         itemBuilder: (_, i) {
           return Dismissible(
             key: ValueKey(goals[i].id),
-            direction: DismissDirection.startToEnd,
-            onDismissed: (direction) {},
+            onDismissed: (direction) {
+              Scaffold.of(_).showSnackBar(
+                SnackBar(
+                  content: Text(goals[i].name + " is deleted"),
+                ),
+              );
+            },
             confirmDismiss: (direction) async {
-              final result = await showDialog(
+              return await showDialog(
                   context: context, builder: (_) => GoalDelete());
-              return result;
             },
             child: ListTile(
               title: Text(
@@ -67,6 +71,17 @@ class _GoalListState extends State<GoalList> {
                   color: Colors.white,
                 ),
                 alignment: Alignment.centerLeft,
+              ),
+            ),
+            secondaryBackground: Container(
+              color: Colors.red,
+              padding: EdgeInsets.only(right: 16),
+              child: Align(
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ),
+                alignment: Alignment.centerRight,
               ),
             ),
           );
