@@ -41,9 +41,13 @@ class _GoalListState extends State<GoalList> {
           return Dismissible(
             key: ValueKey(goals[i].id),
             onDismissed: (direction) {
+              var goal = goals[i];
+              setState(() {
+                goals = service.deleteGoal(goal.id);
+              });
               Scaffold.of(_).showSnackBar(
                 SnackBar(
-                  content: Text(goals[i].name + " is deleted"),
+                  content: Text(goal.name + " is deleted"),
                 ),
               );
             },

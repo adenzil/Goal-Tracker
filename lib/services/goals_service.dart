@@ -27,4 +27,10 @@ class GoalsService {
   getGoalById(int id) {
     return getGoalsList().firstWhere((i) => i.id == id);
   }
+
+  deleteGoal(int id) {
+    var goals = getGoalsList();
+    goals.removeWhere((i) => i.id == id);
+    return goals;
+  }
 }
